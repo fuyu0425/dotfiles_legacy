@@ -1,4 +1,4 @@
-"test
+"test2
 set nocompatible              " be iMproved, required
 123
 filetype off                  " required
