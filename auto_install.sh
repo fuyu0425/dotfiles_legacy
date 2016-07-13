@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "OS is $(uname -s)"
 echo "start dotfile install"
 here=$PWD
 #echo "$PWD"
