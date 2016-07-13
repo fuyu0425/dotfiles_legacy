@@ -1,3 +1,4 @@
+"test
 set nocompatible              " be iMproved, required
 123
 filetype off                  " required
