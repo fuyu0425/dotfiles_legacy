@@ -3,9 +3,9 @@ echo "OS is $(uname -s)"
 echo "start dotfile install"
 here=$PWD
 echo "vim setting"
+vim +PluginInstall +qall
 cd .vim/bundle/YouCompleteMe
 ./install.py --clang-completer
-vim +PluginInstall +qall
 #echo "$PWD"
 echo "the dotfile location is $here"
 cd ~
