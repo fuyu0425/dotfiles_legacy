@@ -12,6 +12,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -45,7 +46,7 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:autoformat_verbosemode=1
 let g:formatdef_clangformat = '"clang-format -style=WebKit"'
 "let g:formatdef_clangformat = '"clang-format -style=llvm"'
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
 noremap <F3> :Autoformat<CR>
 """
 """airline"

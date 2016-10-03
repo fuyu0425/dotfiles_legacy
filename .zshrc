@@ -88,6 +88,8 @@ source $ZSH/oh-my-zsh.sh
 ###################
 #export TERM='xterm-256color'
 export TERM='xterm'
+#GOPATH
+export GOPATH=~/gocode
 
 alias ls='ls -vG'
 alias ll='ls -al'
@@ -101,3 +103,4 @@ alias ptt='ssh bbsu@ptt.cc'
 
 ###others
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
