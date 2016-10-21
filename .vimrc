@@ -2,9 +2,9 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'jiangmiao/auto-pairs'
 Plugin 'vim-airline/vim-airline'        " This is for awesome outlook
 Plugin 'vim-airline/vim-airline-themes' " This is for awesome outlook
@@ -16,7 +16,7 @@ Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_show_diagnostics_ui = 0
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:rbpt_colorpairs = [
@@ -45,42 +45,23 @@ au Syntax * RainbowParenthesesLoadBraces
 ""format""
 let g:autoformat_verbosemode=1
 let g:formatdef_clangformat = '"clang-format -style=WebKit"'
-"let g:formatdef_clangformat = '"clang-format -style=llvm"'
 "au BufWrite * :Autoformat
 noremap <F3> :Autoformat<CR>
-"""
-"""airline"
 set laststatus=2
-"set t_Co=256
-" enable powerline-fonts
-" let g:airline_powerline_fonts = 1
-" " enable tabline
-" let g:airline#extensions#tabline#enabled = 1
-" " set left separator
-" let g:airline#extensions#tabline#left_sep = ' '
-" " set left separator which are not editting
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" " show buffer number
-" let g:airline#extensions#tabline#buffer_nr_show = 1
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme="luna"
-" let g:airline_theme='powerlineish'
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
-" let g:airline_section_z=''
-""""""""""syntastic""""""""""""
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_include_dirs = ['/usr/include/']
+
+"let g:syntastic_cpp_compiler_options = '-std=c++11'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_include_dirs = ['/usr/include/']
 "let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler = 'g++-4.8'
+"let g:syntastic_cpp_check_header = 1
+"let g:syntastic_cpp_compiler = 'g++-4.8'
+
 set title
 set encoding=utf-8
 set fileencodings=utf-8,cp950
@@ -113,3 +94,13 @@ func! CR()
     exec "! ./%<.out"
 endfunc
 map <C-A> ggVG"+y"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
