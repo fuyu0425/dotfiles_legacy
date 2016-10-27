@@ -100,6 +100,7 @@ alias g++='g++-4.8'
 alias gcc='gcc-4.8'
 alias ptt='ssh bbsu@ptt.cc'
 alias dlab='ssh  -X 2016dlab28@140.113.208.231'
+alias xcode="open -a Xcode"
 
 
 ###others
