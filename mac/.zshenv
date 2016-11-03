@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/fuyu0425/.oh-my-zsh
-
+export EDITOR=vim
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="leo"
+ZSH_THEME="fuyu0425"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract autojump zsh-autosuggestions sudo)
+plugins=(git extract autojump zsh-autosuggestions sudo osx)
 
 # User configuration
 
@@ -84,7 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ###my own setting###
-[[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
 ###################
 #export TERM='xterm-256color'
 export TERM='xterm'
@@ -96,8 +95,8 @@ alias ll='ls -al'
 alias la='ls -a'
 alias vi='mvim -v'
 alias vim='mvim -v'
-alias g++='g++-4.8'
-alias gcc='gcc-4.8'
+alias g++='g++-6 -std=c++11'
+alias gcc='gcc-6'
 alias ptt='ssh bbsu@ptt.cc'
 alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"
@@ -108,4 +107,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload bashcompinit
 bashcompinit
 source ~/gh_complete.sh
-
+[[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh

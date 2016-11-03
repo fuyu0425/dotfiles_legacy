@@ -1,8 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+"Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'jiangmiao/auto-pairs'
@@ -14,8 +16,10 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
 Bundle 'ctrlpvim/ctrlp.vim'
-
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 call vundle#end()            " required
+
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "let g:ycm_show_diagnostics_ui = 0
 let g:cpp_class_scope_highlight = 1
@@ -43,7 +47,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-""format""
+""format for c++""
 let g:autoformat_verbosemode=1
 let g:formatdef_clangformat = '"clang-format -style=WebKit"'
 "au BufWrite * :Autoformat
@@ -65,7 +69,7 @@ set statusline+=%#warningmsg#
 
 set title
 set encoding=utf-8
-set fileencodings=utf-8,cp950
+set fileencodings=utf-8
 set number
 set cursorline
 set cursorcolumn
@@ -88,13 +92,7 @@ set background=dark
 colorscheme solarized
 "
 filetype plugin indent on
-map <F5> :call CR()<CR>
-func! CR()
-    exec "w"
-    exec "!g++-4.8 -std=c++11  -O2 -g  % -o %<.out"
-    exec "! ./%<.out"
-endfunc
-map <C-A> ggVG"+y"
+set shell=zsh\ -l
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -117,4 +115,14 @@ let g:ctrlp_custom_ignore = {
    \'link': 'some_bad_symbolic_links',
    \}
 "let g:ctrlp_user_command = 'find %s -type f'  
-"
+au FileType cpp map <F9> :call CPP()<CR>
+func CPP()
+    exec "w"
+    exec "!g++  -O2 -g  % -o %<.out"
+    exec "! ./%<.out"
+endfunc
+map <C-A> ggVG"+y"
+vmap <C-C> "+y"
+nnoremap <F5> :NERDTree<CR>
+nmap <silent> <leader>t :NERDTreeTabsToggle
+"let g:nerdtree_tabs_open_on_console_startup = 1

@@ -12,9 +12,9 @@ echo "create symbolic link in $PWD"
 echo $OS
 if [ $OS = "Darwin" ] ;then
 echo "hi"
-ln -s $here/mac/.zshrc
+ln -s $here/mac/.zshenv
 else 
-ln -s $here/ubuntu/.zshrc
+ln -s $here/ubuntu/.zshenv
 fi
 echo "vim setting"
 ln -s $here/.vim
