@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 "Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -18,8 +17,11 @@ Plugin 'fatih/vim-go'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'kylef/apiblueprint.vim'
 call vundle#end()            " required
-
+syntax enable
+syntax on
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "let g:ycm_show_diagnostics_ui = 0
 let g:cpp_class_scope_highlight = 1
@@ -33,8 +35,6 @@ let g:rbpt_colorpairs = [
             \ ['darkred',     'SeaGreen3'],
             \ ['darkmagenta', 'DarkOrchid3'],
             \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['black',       'SeaGreen3'],
             \ ['darkmagenta', 'DarkOrchid3'],
             \ ['Darkblue',    'firebrick3'],
             \ ['darkgreen',   'RoyalBlue3'],
@@ -44,9 +44,9 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au  Syntax * RainbowParenthesesLoadSquare
+au   Syntax * RainbowParenthesesLoadBraces
+
 ""format for c++""
 let g:autoformat_verbosemode=1
 let g:formatdef_clangformat = '"clang-format -style=WebKit"'
@@ -54,19 +54,6 @@ let g:formatdef_clangformat = '"clang-format -style=WebKit"'
 noremap <F3> :Autoformat<CR>
 set laststatus=2
 set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_cpp_compiler_options = '-std=c++11'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_cpp_include_dirs = ['/usr/include/']
-"let g:syntastic_cpp_remove_include_errors = 1
-"let g:syntastic_cpp_check_header = 1
-"let g:syntastic_cpp_compiler = 'g++-4.8'
-
 set title
 set encoding=utf-8
 set fileencodings=utf-8
@@ -84,8 +71,6 @@ set ignorecase smartcase
 set hlsearch
 set tabstop=4
 "colors
-syntax enable
-syntax on
 set t_Co=256
 let g:solarized_termtrans = 1
 set background=dark
@@ -93,16 +78,6 @@ colorscheme solarized
 "
 filetype plugin indent on
 set shell=zsh\ -l
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:go_list_type = "quickfix"
 
 "ctrlp
 let g:ctrlp_map = '<c-p>'
@@ -126,3 +101,4 @@ vmap <C-C> "+y"
 nnoremap <F5> :NERDTree<CR>
 nmap <silent> <leader>t :NERDTreeTabsToggle
 "let g:nerdtree_tabs_open_on_console_startup = 1
+autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>

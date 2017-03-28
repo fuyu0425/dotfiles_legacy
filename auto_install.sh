@@ -7,19 +7,20 @@ git submodule update --recursive
 here=$PWD
 #echo "$PWD"
 echo "the dotfile location is $here"
-cd ~
-echo "create symbolic link in $PWD"
-echo $OS
 if [ $OS = "Darwin" ] ;then
 echo "hi"
-ln -s $here/mac/.zshenv
+ln -s $here/mac/.zshenv $HOME
 else 
-ln -s $here/ubuntu/.zshenv
+ln -s $here/ubuntu/.zshenv $HOME
 fi
+ln -s $here/common/fuyu0425.zsh-theme $HOME/.oh-my-zsh/themes
+echo "common settings start"
+echo "tmux setting"
+ln -s $here/common/.tmux.conf $HOME
 echo "vim setting"
-ln -s $here/.vim
-ln -s $here/.vimrc
+ln -s $here/common/.vim $HOME
+ln -s $here/common/.vimrc $HOME
 vim +PluginInstall + GoInstallBinaries +qall 
-cd .vim/bundle/YouCompleteMe
+cd $HOME/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --gocode-completer
 echo "complete"

@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh installation.
+export HOST="Leo-MacBook"
 export ZSH=/Users/fuyu0425/.oh-my-zsh
 export EDITOR=vim
 # Set name of the theme to load.
@@ -49,7 +50,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract autojump zsh-autosuggestions sudo osx)
+plugins=(git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z)
 
 # User configuration
 
@@ -100,6 +101,7 @@ alias gcc='gcc-6'
 alias ptt='ssh bbsu@ptt.cc'
 alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"
+alias gcz='git cz'
 
 
 ###others
@@ -107,4 +109,3 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload bashcompinit
 bashcompinit
 source ~/gh_complete.sh
-[[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
