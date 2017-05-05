@@ -7,13 +7,23 @@ git submodule update --recursive
 here=$PWD
 #echo "$PWD"
 echo "the dotfile location is $here"
+cat /etc/shells | grep -q "^/bin/zsh"
+have_zsh=$?
 if [ $OS = "Darwin" ] ;then
 echo "hi"
 ln -fs $here/mac/.zshenv $HOME
 else 
-ln -fs $here/ubuntu/.zshenv $HOME
+    if [ $have_zsh -ne 0 ];then
+        sudo apt-get install zsh
+    fi
+ln -fs $here/ubuntu/.zshrc $HOME
+fi
+if [ ! -d $HOME/.oh-my-zsh ];then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 ln -fs $here/common/fuyu0425.zsh-theme $HOME/.oh-my-zsh/themes
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "common settings start"
 echo "tmux setting"
 ln -fs $here/common/.tmux.conf $HOME
