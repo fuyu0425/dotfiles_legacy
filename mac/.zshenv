@@ -50,7 +50,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z)
+export PATH="/usr/local/bin:$PATH"
+plugins=(git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z tmux)
 
 # User configuration
 
@@ -87,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 ###my own setting###
 ###################
 #export TERM='xterm-256color'
-export TERM='xterm'
+#export TERM='xterm'
 #GOPATH
 export GOPATH=~/gocode
 
@@ -102,6 +103,7 @@ alias ptt='ssh bbsu@ptt.cc'
 alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
+alias rm='rmtrash'
 
 
 ###others
@@ -109,3 +111,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload bashcompinit
 bashcompinit
 source ~/gh_complete.sh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256

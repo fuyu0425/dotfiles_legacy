@@ -9,18 +9,18 @@ here=$PWD
 echo "the dotfile location is $here"
 if [ $OS = "Darwin" ] ;then
 echo "hi"
-ln -s $here/mac/.zshenv $HOME
+ln -fs $here/mac/.zshenv $HOME
 else 
-ln -s $here/ubuntu/.zshenv $HOME
+ln -fs $here/ubuntu/.zshenv $HOME
 fi
-ln -s $here/common/fuyu0425.zsh-theme $HOME/.oh-my-zsh/themes
+ln -fs $here/common/fuyu0425.zsh-theme $HOME/.oh-my-zsh/themes
 echo "common settings start"
 echo "tmux setting"
-ln -s $here/common/.tmux.conf $HOME
+ln -fs $here/common/.tmux.conf $HOME
 echo "vim setting"
-ln -s $here/common/.vim $HOME
-ln -s $here/common/.vimrc $HOME
-vim +PluginInstall + GoInstallBinaries +qall 
+ln -fs $here/common/.vim $HOME
+ln -fs $here/common/.vimrc $HOME
+vim +PluginInstall +qall 
 cd $HOME/.vim/bundle/YouCompleteMe
-./install.py --clang-completer --gocode-completer
+./install.py --clang-completer
 echo "complete"
