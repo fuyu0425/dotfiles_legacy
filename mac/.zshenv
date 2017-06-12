@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:$PATH"
-plugins=(git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z tmux)
+plugins=(wd web-search brew git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z tmux)
 
 # User configuration
 
@@ -98,7 +98,7 @@ alias la='ls -a'
 alias vi='mvim -v'
 alias vim='mvim -v'
 alias g++='g++-6 -std=c++11'
-alias gcc='gcc-6'
+alias gcc='gcc-6 -Wall'
 alias ptt='ssh bbsu@ptt.cc'
 alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"

@@ -19,6 +19,9 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 call vundle#end()            " required
 syntax enable
 syntax on
@@ -77,6 +80,7 @@ set background=dark
 colorscheme solarized
 "
 filetype plugin indent on
+filetype plugin on
 set shell=zsh\ -l
 
 "ctrlp
@@ -102,3 +106,6 @@ nnoremap <F5> :NERDTree<CR>
 nmap <silent> <leader>t :NERDTreeTabsToggle
 "let g:nerdtree_tabs_open_on_console_startup = 1
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
+
+let g:UltiSnipsExpandTrigger="<F4>"
+let g:UltiSnipsSnippetDirectories=['UltiSnips']
