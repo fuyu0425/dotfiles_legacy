@@ -10,13 +10,14 @@ echo "the dotfile location is $here"
 cat /etc/shells | grep -q "^/bin/zsh"
 have_zsh=$?
 if [ $OS = "Darwin" ] ;then
-echo "hi"
 ln -fs $here/mac/.zshenv $HOME
-else 
+elif [ $OS = "Linux" ] ;then
     if [ $have_zsh -ne 0 ];then
         sudo apt-get install zsh
     fi
 ln -fs $here/ubuntu/.zshrc $HOME
+elif [ $OS = "FreeBSD" ] ;then
+ln -fs $here/freebsd/.zshrc $HOME
 fi
 if [ ! -d $HOME/.oh-my-zsh ];then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
