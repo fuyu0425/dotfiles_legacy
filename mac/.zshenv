@@ -50,7 +50,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
 plugins=(wd web-search brew git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z tmux)
 
 # User configuration
@@ -104,6 +104,7 @@ alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
 alias rm='rmtrash'
+alias sshx='ssh'
 
 
 ###others

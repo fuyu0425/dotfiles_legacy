@@ -5,10 +5,17 @@ echo "start dotfile install"
 git submodule init
 git submodule update --recursive
 here=$PWD
-#echo "$PWD"
 echo "the dotfile location is $here"
-cat /etc/shells | grep -q "^/bin/zsh"
+cat /etc/shells | grep -q "zsh"
 have_zsh=$?
+
+
+# install oh-my-zsh
+if [ ! -d $HOME/.oh-my-zsh ];then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+# Darwin is MacOS
 if [ $OS = "Darwin" ] ;then
 ln -fs $here/mac/.zshenv $HOME
 elif [ $OS = "Linux" ] ;then
@@ -19,12 +26,11 @@ ln -fs $here/ubuntu/.zshrc $HOME
 elif [ $OS = "FreeBSD" ] ;then
 ln -fs $here/freebsd/.zshrc $HOME
 fi
-if [ ! -d $HOME/.oh-my-zsh ];then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
+# My Custom theme
 ln -fs $here/common/fuyu0425.zsh-theme $HOME/.oh-my-zsh/themes
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 echo "common settings start"
 echo "tmux setting"
 ln -fs $here/common/.tmux.conf $HOME
