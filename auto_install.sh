@@ -44,7 +44,7 @@ if echo "${answer:=y}"|grep -iq '^y' ;then
        $install_youcompletme=1
     else
        $install_youcompletme=0
-        sed -i $HOME/.vimrc -e s/"Bundle \'Valloric\/YouCompleteMe\'"/"\"Bundle \'Valloric\/YouCompleteMe\'"/g
+       sed -e s/"Bundle \'Valloric\/YouCompleteMe\'"/"\"Bundle \'Valloric\/YouCompleteMe\'"/g $HOME/.vimrc 
 fi
 vim +PluginInstall +qall 
 if [ $install_youcompletme -ne 0 ];then
