@@ -41,10 +41,10 @@ echo "install YouCompletme? (y/n) default is y"
 read answer
 install_youcompletme=1
 if echo "${answer:=y}"|grep -iq '^y' ;then
-       $install_youcompletme=1
+       install_youcompletme=1
     else
-       $install_youcompletme=0
-       sed -e s/"Bundle \'Valloric\/YouCompleteMe\'"/"\"Bundle \'Valloric\/YouCompleteMe\'"/g $HOME/.vimrc 
+       install_youcompletme=0
+       sed -i -e s@"Bundle 'Valloric/YouCompleteMe'"@"\"Bundle 'Valloric/YouCompleteMe'"@g $HOME/.vimrc
 fi
 vim +PluginInstall +qall 
 if [ $install_youcompletme -ne 0 ];then
