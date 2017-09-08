@@ -100,6 +100,12 @@ func CPP()
     exec "!g++  -O2 -g  % -o %<.out"
     exec "! ./%<.out"
 endfunc
+au FileType python map <F9> :call PY()<CR>
+func PY()
+    exec "w"
+    exec "!chmod +x %"
+    exec "! ./%"
+endfunc
 map <C-A> ggVG"+y"
 vmap <C-C> "+y"
 nnoremap <F5> :NERDTree<CR>

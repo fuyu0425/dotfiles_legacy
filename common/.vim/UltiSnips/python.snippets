@@ -1,0 +1,11 @@
+snippet pwn
+#!/usr/bin/env python
+from pwn import *
+
+host = '1.2.3.4'
+port = 1234
+
+r = remote(host,port)
+
+r.interactive()
+endsnippet

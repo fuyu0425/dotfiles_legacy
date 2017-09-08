@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
-plugins=(wd web-search brew git extract  zsh-autosuggestions sudo osx vagrant docker docker-compose z tmux)
+plugins=(wd web-search brew git extract  zsh-autosuggestions sudo osx docker docker-compose z tmux vagrant)
 
 # User configuration
 
@@ -105,6 +105,7 @@ alias xcode="open -a Xcode"
 alias gcz='git cz'
 alias rm='rmtrash'
 alias sshx='ssh'
+alias cat='ccat'
 
 
 ###others
