@@ -51,8 +51,10 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
+
 source $HOME/zsh-common.zsh
 plugins+=(brew osx)
+
 
 # User configuration
 
@@ -107,6 +109,7 @@ alias rm='rmtrash'
 alias sshx='ssh'
 alias cat='ccat'
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
 export PATH="$PATH:`yarn global bin`:/usr/local/sbin:$(brew --prefix homebrew/php/php56)/bin:$HOME/gocode/bin"
 
@@ -118,4 +121,3 @@ homestead()
 
 
 ###others
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
