@@ -12,12 +12,14 @@ have_zsh=$?
 
 # install oh-my-zsh
 if [ ! -d $HOME/.oh-my-zsh ];then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh) && exit"
 fi
+
+ln -fs $here/common/zsh-common.zsh $HOME
 
 # Darwin is MacOS
 if [ $OS = "Darwin" ] ;then
-ln -fs $here/mac/.zshenv $HOME
+ln -fs $here/mac/.zshrc $HOME
 elif [ $OS = "Linux" ] ;then
     if [ $have_zsh -ne 0 ];then
         sudo apt-get install zsh

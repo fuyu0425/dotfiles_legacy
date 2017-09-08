@@ -51,7 +51,8 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
-plugins=(wd web-search brew git extract  zsh-autosuggestions sudo osx docker docker-compose z tmux vagrant)
+source $HOME/zsh-common.zsh
+plugins+=(brew osx)
 
 # User configuration
 
@@ -100,7 +101,6 @@ alias vim='mvim -v'
 alias g++='g++-6 -std=c++11 -D fuyu0425'
 alias gcc='gcc-6 -Wall -D fuyu0425'
 alias ptt='ssh bbsu@ptt.cc'
-alias dlab='ssh  -X 2016dlab28@140.113.208.231'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
 alias rm='rmtrash'
@@ -108,9 +108,14 @@ alias sshx='ssh'
 alias cat='ccat'
 
 
+export PATH="$PATH:`yarn global bin`:/usr/local/sbin:$(brew --prefix homebrew/php/php56)/bin:$HOME/gocode/bin"
+
+homestead()
+{
+       sh -c 'cd ~/Homestead && vagrant "$*"'
+
+}
+
+
 ###others
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-autoload bashcompinit
-bashcompinit
-source ~/gh_complete.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
