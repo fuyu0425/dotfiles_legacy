@@ -81,7 +81,7 @@ colorscheme solarized
 "
 filetype plugin indent on
 filetype plugin on
-set shell=zsh\ -l
+set shell=/bin/zsh\ -l
 
 "ctrlp
 let g:ctrlp_map = '<c-p>'
@@ -93,11 +93,11 @@ let g:ctrlp_custom_ignore = {
    \'file': '\v\.(exe|so|dll)$',
    \'link': 'some_bad_symbolic_links',
    \}
-"let g:ctrlp_user_command = 'find %s -type f'  
+"let g:ctrlp_user_command = 'find %s -type f'
 au FileType cpp map <F9> :call CPP()<CR>
 func CPP()
     exec "w"
-    exec "!g++  -O2 -g  % -o %<.out"
+    exec "!g++  % -o %<.out"
     exec "! ./%<.out"
 endfunc
 au FileType python map <F9> :call PY()<CR>

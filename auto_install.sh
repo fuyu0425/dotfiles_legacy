@@ -19,7 +19,8 @@ ln -fs $here/common/zsh-common.zsh $HOME
 
 # Darwin is MacOS
 if [ $OS = "Darwin" ] ;then
-ln -fs $here/mac/.zshrc $HOME
+ln -fs $here/mac/.zshenv $HOME
+ln -fs $here/mac/.ycm_extra_conf.py $HOME
 elif [ $OS = "Linux" ] ;then
     if [ $have_zsh -ne 0 ];then
         sudo apt-get install zsh
