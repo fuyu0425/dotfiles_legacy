@@ -55,3 +55,6 @@ cd $HOME/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
 fi
 echo "complete"
+
+# git config 
+git config --global credential.helper cache

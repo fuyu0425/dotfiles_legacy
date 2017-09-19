@@ -21,6 +21,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'rodjek/vim-puppet'
 
 call vundle#end()            " required
 syntax enable
