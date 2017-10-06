@@ -9,6 +9,8 @@ echo "the dotfile location is $here"
 cat /etc/shells | grep -q "zsh"
 have_zsh=$?
 
+mkdir $HOME/bin
+
 echo "install YouCompletme? (y/n) default is y"
 read answer
 install_youcompletme=1
@@ -25,6 +27,7 @@ fi
 
 ln -fs $here/common/zsh-common.zsh $HOME
 ln -fs $here/common/.editorconfig $HOME
+
 
 # Darwin is MacOS
 if [ $OS = "Darwin" ] ;then
