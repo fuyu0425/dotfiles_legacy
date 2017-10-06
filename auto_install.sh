@@ -50,7 +50,7 @@ echo "vim setting"
 ln -fs $here/common/.vim $HOME
 ln -fs $here/common/.vimrc $HOME
 
-if [ $install_youcompletme -e 0 ];then
+if [ $install_youcompletme -eq 0 ];then
     sed -i -e s@"Bundle 'Valloric/YouCompleteMe'"@"\"Bundle 'Valloric/YouCompleteMe'"@g $HOME/.vimrc
 fi
 
