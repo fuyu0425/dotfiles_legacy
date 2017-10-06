@@ -100,13 +100,13 @@ alias ll='ls -al'
 alias la='ls -a'
 alias vi='mvim -v'
 alias vim='mvim -v'
-alias g++='g++-7 -std=c++11 -D fuyu0425'
+alias g++='g++-7  -D fuyu0425'
 alias gcc='gcc-7  -D fuyu0425'
-alias ptt='ssh bbsu@ptt.cc'
+#alias ptt='ssh bbsu@ptt.cc'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
 alias rm='rmtrash'
-alias sshx='ssh'
+alias sshx='ssh -X'
 alias cat='ccat'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256

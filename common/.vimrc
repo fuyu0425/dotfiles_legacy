@@ -4,6 +4,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'jiangmiao/auto-pairs'
@@ -66,14 +67,14 @@ set cursorline
 set cursorcolumn
 set ruler
 set wrap
-set expandtab
-set shiftwidth=4
+"set expandtab
+"set shiftwidth=4
 set autoindent
 set smartindent
 set confirm
 set ignorecase smartcase
 set hlsearch
-set tabstop=4
+"set tabstop=4
 "colors
 set t_Co=256
 let g:solarized_termtrans = 1
@@ -116,3 +117,4 @@ autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
 
 let g:UltiSnipsExpandTrigger="<F4>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips']
+let g:syntastic_check_on_open = 0
