@@ -23,6 +23,7 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'rodjek/vim-puppet'
+Bundle 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 syntax enable
@@ -118,3 +119,9 @@ autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
 let g:UltiSnipsExpandTrigger="<F4>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips']
 let g:syntastic_check_on_open = 0
+
+let g:NERDSpaceDelims=1
+
+map cc  <leader>cc
+map cn  <leader>cn
+map <C-_> <leader>c<space>

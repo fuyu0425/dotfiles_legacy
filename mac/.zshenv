@@ -51,7 +51,6 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
-
 source $HOME/zsh-common.zsh
 plugins+=(brew osx)
 
