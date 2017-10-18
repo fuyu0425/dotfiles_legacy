@@ -9,7 +9,10 @@ echo "the dotfile location is $here"
 cat /etc/shells | grep -q "zsh"
 have_zsh=$?
 
+
 mkdir $HOME/bin
+cp -r $here/common/bin $HOME/bin
+
 
 echo "install YouCompletme? (y/n) default is y"
 read answer

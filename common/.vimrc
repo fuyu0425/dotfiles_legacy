@@ -97,6 +97,12 @@ let g:ctrlp_custom_ignore = {
    \'link': 'some_bad_symbolic_links',
    \}
 "let g:ctrlp_user_command = 'find %s -type f'
+au FileType c map <F9> :call C()<CR>
+func C()
+    exec "w"
+    exec "!gcc  % -o %<.out"
+    exec "! ./%<.out"
+endfunc
 au FileType cpp map <F9> :call CPP()<CR>
 func CPP()
     exec "w"
