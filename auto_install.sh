@@ -11,7 +11,7 @@ have_zsh=$?
 
 
 mkdir $HOME/bin
-cp -r $here/common/bin $HOME/bin
+cp -rn $here/common/bin $HOME/bin
 
 
 echo "install YouCompletme? (y/n) default is y"
