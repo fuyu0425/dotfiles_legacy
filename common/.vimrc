@@ -100,19 +100,19 @@ let g:ctrlp_custom_ignore = {
 se makeprg=g++\ %\ -Wall\ -Wshadow\ -std=c++14\ -o\ %<.out
 
 map <F10> :make <CR>:!./%< < %<.in <CR>
-au FileType c map <F9> :call C()<CR> <CR>
+au FileType c map <F9> :call C()<CR>
 func C()
     exec "w"
     exec "!gcc  % -o %<"
     exec "! ./%<"
 endfunc
-au FileType cpp map <F9> :call CPP()<CR><CR>
+au FileType cpp map <F9> :call CPP()<CR>
 func CPP()
     exec "w"
-    exec "!g++  % -o %<"
+    exec "!g++ -D fuyu0425 % -o %<"
     exec "! ./%<"
 endfunc
-au FileType python map <F9> :call PY()<CR><CR>
+au FileType python map <F9> :call PY()<CR>
 func PY()
     exec "w"
     exec "!chmod +x %"
@@ -134,3 +134,4 @@ let g:NERDSpaceDelims=1
 map cc  <leader>cc
 map cn  <leader>cn
 map <C-_> <leader>c<space>
+imap <C-_> <ESC><leader>c<space> i
