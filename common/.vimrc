@@ -97,7 +97,7 @@ let g:ctrlp_custom_ignore = {
             \'link': 'some_bad_symbolic_links',
             \}
 "let g:ctrlp_user_command = 'find %s -type f
-se makeprg=g++\ %\ -Wall\ -Wshadow\ -std=c++14\ -o\ %<.out
+se makeprg=g++\ %\ -Wall\ -Wshadow\ -std=c++14\ -o\ %<
 
 map <F10> :make <CR>:!./%< < %<.in <CR>
 au FileType c map <F9> :call C()<CR>

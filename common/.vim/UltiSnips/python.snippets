@@ -8,6 +8,10 @@ port = 1234
 r = remote(host,port)
 # r = process('')
 # elf = ELF('')
+# elf_libc = ELF('./libc.so.6')
+context.terminal = ["tmux", "splitw", "-h"]
+context.arch = 'amd64'
+#  gdb.attach(proc.pidof(r)[0])
 
 r.interactive()
 endsnippet
