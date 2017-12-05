@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 
 ###my own setting###
 ###################
-#export TERM='xterm-256color'
+# export TERM='xterm-256color'
 export TERM='xterm'
 #GOPATH
 export GOPATH=~/gocode
