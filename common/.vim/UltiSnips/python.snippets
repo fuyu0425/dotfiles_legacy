@@ -18,7 +18,7 @@ port = 1234
 if len(sys.argv) > 1:
     r = remote(host,port)
 else:
-    r = process('$1'),env={'LD_PRELOAD': libc_path}
+    r = process('$1',env={'LD_PRELOAD': libc_path})
 elf = ELF('$1')
 #  gdb.attach(proc.pidof(r)[0])
 
