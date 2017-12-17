@@ -4,6 +4,11 @@ import os
 import sys
 from pwn import *
 
+if len(sys.argv) > 1:
+    r = remote(host,port)
+else:
+    r = process('$1',env={'LD_PRELOAD': libc_path})
+elf = ELF('$1')
 libc_path =''
 if os.path.exists('./libc.so.6'):
     libc_path = './libc.so.6'
@@ -11,15 +16,10 @@ else:
     libc_path ='/lib/x86_64-linux-gnu/libc.so.6'
 elf_libc = ELF(libc_path)
 context.terminal = ["tmux", "splitw", "-h"]
-context.arch = 'amd64'
+context.arch = elf.arch
 host = '1.2.3.4'
 port = 1234
 
-if len(sys.argv) > 1:
-    r = remote(host,port)
-else:
-    r = process('$1',env={'LD_PRELOAD': libc_path})
-elf = ELF('$1')
 #  gdb.attach(proc.pidof(r)[0])
 
 r.interactive()
