@@ -103,7 +103,7 @@ map <F10> :make <CR>:!./%< < %<.in <CR>
 au FileType c map <F9> :call C()<CR>
 func C()
     exec "w"
-    exec "!gcc  % -o %<"
+    exec "!gcc -D fuyu0425 % -o %<"
     exec "! ./%<"
 endfunc
 au FileType cpp map <F9> :call CPP()<CR>
@@ -120,7 +120,7 @@ func PY()
 endfunc
 map <C-A> ggVG"+y"
 vmap <C-C> "+y"
-nnoremap <F5> :NERDTree<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 nmap <silent> <leader>t :NERDTreeTabsToggle
 "let g:nerdtree_tabs_open_on_console_startup = 1
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
