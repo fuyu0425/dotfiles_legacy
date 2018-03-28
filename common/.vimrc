@@ -26,6 +26,7 @@ Plugin 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
+set t_Co=256
 syntax enable
 syntax on
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'

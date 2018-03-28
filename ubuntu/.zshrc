@@ -94,6 +94,7 @@ export GOPATH=~/gocode
 alias ls='ls -vG --color=auto'
 alias ll='ls -al --color=auto'
 alias la='ls -a --color=auto'
+alias tmux='TERM=screen-256color-bce tmux'
 
 
 ###others
