@@ -24,6 +24,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'thiagoalessio/rainbow_levels.vim'
 
 call vundle#end()            " required
 set t_Co=256
@@ -104,7 +105,7 @@ map <F10> :make <CR>:!./%< < %<.in <CR>
 au FileType c map <F9> :call C()<CR>
 func C()
     exec "w"
-    exec "!gcc  % -o %<"
+    exec "!gcc -D fuyu0425 % -o %<"
     exec "! ./%<"
 endfunc
 au FileType cpp map <F9> :call CPP()<CR>
@@ -121,7 +122,7 @@ func PY()
 endfunc
 map <C-A> ggVG"+y"
 vmap <C-C> "+y"
-nnoremap <F5> :NERDTree<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 nmap <silent> <leader>t :NERDTreeTabsToggle
 "let g:nerdtree_tabs_open_on_console_startup = 1
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
@@ -136,3 +137,23 @@ map cc  <leader>cc
 map cn  <leader>cn
 map <C-_> <leader>c<space>
 imap <C-_> <ESC><leader>c<space> i
+
+" dirty hack
+cmap w!! w !sudo tee > /dev/null %
+
+
+" rainbow levels config
+
+map <F2> :RainbowLevelsToggle<cr>
+
+
+
+let g:rainbow_levels = [
+    \{'ctermfg': 2, 'guifg': '#859900'},
+    \{'ctermfg': 6, 'guifg': '#2aa198'},
+    \{'ctermfg': 4, 'guifg': '#268bd2'},
+    \{'ctermfg': 5, 'guifg': '#6c71c4'},
+    \{'ctermfg': 1, 'guifg': '#dc322f'},
+    \{'ctermfg': 3, 'guifg': '#b58900'},
+    \{'ctermfg': 8, 'guifg': '#839496'},
+    \{'ctermfg': 7, 'guifg': '#586e75'}]

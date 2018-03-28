@@ -16,7 +16,7 @@ ZSH_THEME="fuyu0425"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -36,7 +36,7 @@ ENABLE_CORRECTION="false"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -50,8 +50,12 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
+export PATH="`yarn global bin`:/usr/local/sbin:$HOME/gocode/bin:$PATH"
 source $HOME/zsh-common.zsh
+
 plugins+=(brew osx)
 
 
@@ -61,6 +65,10 @@ plugins+=(brew osx)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# phpbrew
+export PHPBREW_RC_ENABLE=1
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -110,7 +118,6 @@ alias cat='ccat'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
-export PATH="$PATH:`yarn global bin`:/usr/local/sbin:$(brew --prefix homebrew/php/php56)/bin:$HOME/gocode/bin"
 
 homestead()
 {
