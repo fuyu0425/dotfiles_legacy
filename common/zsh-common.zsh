@@ -7,3 +7,10 @@ ZSH_COMMAND_TIME_MIN_SECONDS=1
 # Set it to "" for disable echo `time: xx`.
 ZSH_COMMAND_TIME_ECHO=1
 
+function git-next() {
+    git log --reverse --pretty=%H master | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
+}
+
+function git-prev() {
+    git checkout HEAD^1
+}
