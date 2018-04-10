@@ -27,6 +27,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'thiagoalessio/rainbow_levels.vim'
 
 call vundle#end()            " required
+set t_Co=256
 syntax enable
 syntax on
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'

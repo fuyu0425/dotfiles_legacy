@@ -89,11 +89,13 @@ source $ZSH/oh-my-zsh.sh
 ###################
 # export TERM='xterm-256color'
 export TERM='xterm'
+export EDITOR=vim
 #GOPATH
 export GOPATH=~/gocode
 alias ls='ls -vG --color=auto'
 alias ll='ls -al --color=auto'
 alias la='ls -a --color=auto'
+alias tmux='TERM=screen-256color-bce tmux'
 
 
 ###others
