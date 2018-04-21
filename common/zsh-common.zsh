@@ -7,7 +7,7 @@ ZSH_COMMAND_TIME_MIN_SECONDS=1
 # Set it to "" for disable echo `time: xx`.
 ZSH_COMMAND_TIME_ECHO=1
 
-
+cdpath+=(. $HOME  /usr/local/etc /usr/local/var /etc /var)
 
 alias sudo='sudo '
 function git-next() {
