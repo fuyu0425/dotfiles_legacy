@@ -51,12 +51,12 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
-export PATH="`yarn global bin`:/usr/local/sbin:$HOME/gocode/bin:$PATH"
+path=($path /usr/local/sbin $HOME/gocode/bin /usr/local/bin:$HOME/.composer/vendor/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
+path=(`yarn global bin` $path)
+path+=($HOME/cf_submit)
 source $HOME/zsh-common.zsh
 
-plugins+=(brew osx)
+plugins+=(brew osx tig)
 
 
 # User configuration
@@ -109,6 +109,7 @@ alias vi='mvim -v'
 alias vim='mvim -v'
 alias g++='g++-7  -D fuyu0425'
 alias gcc='gcc-7  -D fuyu0425'
+alias gcov='gcov-7'
 #alias ptt='ssh bbsu@ptt.cc'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
@@ -119,10 +120,24 @@ alias cat='ccat'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
 
-homestead()
-{
-       sh -c 'cd ~/Homestead && vagrant "$*"'
+# for makefile
+export CCX='g++-7'
+export CCOV='gcov-7'
 
+
+homestead(){
+    sh -c 'cd ~/Homestead && vagrant "$*"'
+
+}
+proxy(){
+    export https_proxy=$1
+    export http_proxy=$1
+    echo "proxy is set to $1"
+}
+unproxy(){
+    unset https_proxy
+    unset http_proxy
+    echo "proxy is unset"
 }
 
 
