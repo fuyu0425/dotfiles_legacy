@@ -25,6 +25,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'thiagoalessio/rainbow_levels.vim'
+Bundle 'embear/vim-localvimrc'
 
 call vundle#end()            " required
 set t_Co=256
@@ -157,3 +158,6 @@ let g:rainbow_levels = [
     \{'ctermfg': 3, 'guifg': '#b58900'},
     \{'ctermfg': 8, 'guifg': '#839496'},
     \{'ctermfg': 7, 'guifg': '#586e75'}]
+" localvimrc
+set g:localvimrc_ask = 0
+

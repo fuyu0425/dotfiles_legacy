@@ -121,7 +121,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
 
 # for makefile
-export CCX='g++-7'
+export CXX='g++-7'
 export CCOV='gcov-7'
 
 
