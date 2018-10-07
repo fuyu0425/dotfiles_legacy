@@ -14,20 +14,22 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'kylef/apiblueprint.vim'
+"Plugin 'kylef/apiblueprint.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'rodjek/vim-puppet'
+"Plugin 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'thiagoalessio/rainbow_levels.vim'
+" Bundle 'thiagoalessio/rainbow_levels.vim'
 Bundle 'embear/vim-localvimrc'
-
+Plugin 'Yggdroot/indentLine'
 call vundle#end()            " required
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '.'
 set t_Co=256
 syntax enable
 syntax on
@@ -126,11 +128,15 @@ vmap <C-C> "+y"
 nnoremap <F5> :NERDTreeToggle<CR>
 nmap <silent> <leader>t :NERDTreeTabsToggle
 "let g:nerdtree_tabs_open_on_console_startup = 1
-autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
+" autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
+" syntax checking
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_check_on_open = 0
+let g:syntastic_enable_signs=0
+let g:syntastic_echo_current_error=0
 
 let g:UltiSnipsExpandTrigger="<F4>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips']
-let g:syntastic_check_on_open = 0
 
 let g:NERDSpaceDelims=1
 
@@ -163,3 +169,35 @@ let g:rainbow_levels = [
 
 let g:localvimrc_ask=0
 
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line

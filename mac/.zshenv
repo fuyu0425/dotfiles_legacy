@@ -54,6 +54,8 @@ HIST_STAMPS="mm/dd/yyyy"
 path=($path /usr/local/sbin $HOME/gocode/bin /usr/local/bin:$HOME/.composer/vendor/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
 path=(`yarn global bin` $path)
 path+=($HOME/cf_submit)
+path+=(/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.16.0.201807130628/tools/compiler/bin)
+unsetopt inc_append_history
 source $HOME/zsh-common.zsh
 
 plugins+=(brew osx tig)
@@ -65,6 +67,7 @@ plugins+=(brew osx tig)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+unsetopt inc_append_history
 
 # phpbrew
 export PHPBREW_RC_ENABLE=1
@@ -107,9 +110,9 @@ alias ll='ls -al'
 alias la='ls -a'
 alias vi='mvim -v'
 alias vim='mvim -v'
-alias g++='g++-7  -D fuyu0425'
-alias gcc='gcc-7  -D fuyu0425'
-alias gcov='gcov-7'
+alias g++='g++-8  -D fuyu0425'
+alias gcc='gcc-8  -D fuyu0425'
+alias gcov='gcov-8'
 #alias ptt='ssh bbsu@ptt.cc'
 alias xcode="open -a Xcode"
 alias gcz='git cz'
@@ -121,8 +124,9 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
 
 # for makefile
-export CXX='g++-7'
-export CCOV='gcov-7'
+export CC='gcc-8'
+export CXX='g++-8'
+export CCOV='gcov-8'
 
 
 homestead(){
@@ -142,3 +146,6 @@ unproxy(){
 
 
 ###others
+
+# OCaml
+eval `opam config env`
