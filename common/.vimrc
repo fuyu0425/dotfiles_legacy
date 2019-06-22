@@ -1,40 +1,60 @@
+if has('nvim')
+    " let s:editor_root=expand("~/.config/nvim")
+    " set rtp+=~/.config/nvim/bundle/Vundle.vim
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+      silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+      \    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall
+    endif
+else
+    " let s:editor_root=expand("~/.vim")
+    " set rtp+=~/.vim/bundle/Vundle.vim
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 "Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Bundle 'gmarik/Vundle.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'jiangmiao/auto-pairs'
-Plugin 'vim-airline/vim-airline'        " This is for awesome outlook
-Plugin 'vim-airline/vim-airline-themes' " This is for awesome outlook
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-surround'
-"Plugin 'fatih/vim-go'
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Plugin 'ekalinin/Dockerfile.vim'
-"Plugin 'kylef/apiblueprint.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-"Plugin 'rodjek/vim-puppet'
-Bundle 'scrooloose/nerdcommenter'
-" Bundle 'thiagoalessio/rainbow_levels.vim'
-Bundle 'embear/vim-localvimrc'
-Plugin 'Yggdroot/indentLine'
-call vundle#end()            " required
+" call vundle#rc(s:editor_root . '/bundle')
+call plug#begin()
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'        " This is for awesome outlook
+Plug 'vim-airline/vim-airline-themes' " This is for awesome outlook
+Plug 'Chiel92/vim-autoformat'
+Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-surround'
+" Plug 'fatih/vim-go'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdcommenter'
+Plug 'embear/vim-localvimrc'
+Plug 'Yggdroot/indentLine'
+Plug 'mkitt/tabline.vim'
+" Plug 'let-def/vimbufsync'
+Plug 'https://framagit.org/tyreunom/coquille'
+" Plug 'vim-scripts/vim-auto-save'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'cespare/vim-toml'
+call plug#end()            " required
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 set t_Co=256
 syntax enable
 syntax on
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"let g:ycm_show_diagnostics_ui = 0
+let g:ycm_show_diagnostics_ui = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:rbpt_colorpairs = [
@@ -55,20 +75,26 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
-au  Syntax * RainbowParenthesesLoadSquare
-au   Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 ""format for c++""
 let g:autoformat_verbosemode=1
 let g:formatdef_clangformat = '"clang-format -style=WebKit"'
-"au BufWrite * :Autoformat
+let g:airline#extensions#ale#enabled = 1
+
+" airline
+" let g:airline#extensions#tabline#enabled = 1
 noremap <F3> :Autoformat<CR>
 set laststatus=2
-set statusline+=%#warningmsg#
+" set statusline+=%#warningmsg#
 set title
 set encoding=utf-8
 set fileencodings=utf-8
 set number
+set relativenumber
+set showcmd
+set autochdir
 set cursorline
 set cursorcolumn
 set ruler
@@ -149,9 +175,6 @@ imap <C-_> <ESC><leader>c<space> i
 cmap w!! w !sudo tee > /dev/null %
 
 
-" rainbow levels config
-
-map <F2> :RainbowLevelsToggle<cr>
 
 
 
@@ -169,6 +192,67 @@ let g:rainbow_levels = [
 
 let g:localvimrc_ask=0
 
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+
+
+"autosave
+" let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+fun! CWIM()
+    let cls = {'{' : '}', '[' : ']', '(' : ')'}
+    let opn = {'}' : '{', ']' : '[', ')' : '('}
+    let stack = []
+
+    for c in split(getline('.'), '\zs')
+        if match('{[(' , c) > -1
+            call insert(stack, c)
+        elseif match('}])', c) > -1
+            call remove(stack, index(stack, opn[c]))
+        endif
+    endfor
+
+    return len(stack) ? cls[stack[0]] : ''
+endfun
+
+inoremap <expr> <C-]> CWIM()
+let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = { 'cryptoline': { 'left': '(*','right': '*)' } }
+au BufRead,BufNewFile *.cl set filetype=cryptoline
+
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+autocmd FileType vim,tex,coq let b:autoformat_autoindent=0
+"coq setting"
+autocmd FileType coq call SetCoqOptions()
+function SetCoqOptions()
+    call coquille#Commands()
+    call CoqLaunch()
+    map <buffer> <silent> <F7> :CoqUndo<CR>
+    map <buffer> <silent> <F8> :CoqNext<CR>
+    map <buffer> <silent> <F9> :CoqToCursor<CR>
+
+    imap <buffer> <silent> <F7> <ESC>:CoqUndo<CR>a
+    imap <buffer> <silent> <F8> <ESC>:CoqNext<CR>a
+    imap <buffer> <silent> <F9> <ESC>:CoqToCursor<CR>a
+    let g:coquille_auto_move="true"
+
+endfunction
+
+" ale config
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_cpp_gcc_executable='/usr/local/bin/gcc-8'
+let g:ale_linters = {'c': ['gcc'], 'cpp': ['g++'], 'python': ['flake8', 'pylint']}
+
+let g:ale_change_sign_column_color=1
+
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')

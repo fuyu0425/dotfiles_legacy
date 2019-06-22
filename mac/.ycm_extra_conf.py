@@ -35,20 +35,21 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-'-std=c++14',
+'-std=c++17',
 '-x',
 'c++',
-'-isystem',
-'../BoostParts',
-'-isystem',
+#  '-isystem',
+#  '../BoostParts',
+#  '-isystem',
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
-'/System/Library/Frameworks/Python.framework/Headers',
-'-isystem',
-'/Library/Developer/CommandLineTools/usr/include/c++/v1',
+#  '/System/Library/Frameworks/Python.framework/Headers',
+#  '-isystem',
+#  '/Library/Developer/CommandLineTools/usr/include/c++/v1',
+'-isystem', '/usr/local/include/c++/8.2.0',
+'-isystem' ,'/usr/local/include/c++/8.2.0/x86_64-apple-darwin15.6.0',
 '-isystem', '/usr/include/',
 '-I', '/usr/local/include',
-'-I' ,'/usr/local/include/c++/7.2.0/x86_64-apple-darwin15.6.0',
 '-isystem',
 '../llvm/include',
 '-isystem',

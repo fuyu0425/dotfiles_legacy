@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export HOST="Leo-MacBook"
 export ZSH=/Users/fuyu0425/.oh-my-zsh
-export EDITOR=vim
+export EDITOR=nvim
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -53,8 +53,11 @@ HIST_STAMPS="mm/dd/yyyy"
 
 path=($path /usr/local/sbin $HOME/gocode/bin /usr/local/bin:$HOME/.composer/vendor/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
 path=(`yarn global bin` $path)
+path+=("/Users/fuyu0425/Applications/Wine Stable.app/Contents/Resources/start/bin" "/Users/fuyu0425/Applications/Wine Stable.app/Contents/Resources/wine/bin")
 path+=($HOME/cf_submit)
 path+=(/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.16.0.201807130628/tools/compiler/bin)
+path+=($HOME/.cabal/bin)
+path+=(/opt/minicom/2.2/bin)
 unsetopt inc_append_history
 source $HOME/zsh-common.zsh
 
@@ -102,14 +105,16 @@ export PHPBREW_RC_ENABLE=1
 ###################
 #export TERM='xterm-256color'
 #export TERM='xterm'
+# export TERM='screen-256color'
+export TERM='xterm-24bits'
 #GOPATH
 export GOPATH=~/gocode
 
 alias ls='ls -vG'
 alias ll='ls -al'
 alias la='ls -a'
-alias vi='mvim -v'
-alias vim='mvim -v'
+alias vi='nvim'
+alias vim='nvim'
 alias g++='g++-8  -D fuyu0425'
 alias gcc='gcc-8  -D fuyu0425'
 alias gcov='gcov-8'
@@ -119,6 +124,7 @@ alias gcz='git cz'
 alias rm='rmtrash'
 alias sshx='ssh -X'
 alias cat='ccat'
+alias ping='prettyping'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
 
@@ -149,3 +155,11 @@ unproxy(){
 
 # OCaml
 eval `opam config env`
+disable r
+LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style zenburn"
+alias oless='env less'
+alias less="LESSOPEN=\"${LESSOPEN}\" less -m -N -g -i -J  --line-numbers --underline-special"
+alias more='less'
+alias ls='exa'
+export HOMEBREW_MAKE_JOBS=4
+export PYTHONWARNINGS="ignore"

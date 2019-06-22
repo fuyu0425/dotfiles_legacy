@@ -1,4 +1,5 @@
 plugins+=(git extract  zsh-autosuggestions sudo  docker  docker-compose z tmux vagrant zsh-syntax-highlighting command-time)
+plugins+=(copydir copyfile copybuffer)
 path=($HOME/bin $path)
 umask 077
 # If command execution time above min. time, plugins will not output time.
@@ -16,4 +17,15 @@ function git-next() {
 
 function git-prev() {
     git checkout HEAD^1
+}
+
+function tab-date(){
+    autoload -U compinit
+    compinit
+    zstyle ':completion:*' file-sort modification
+}
+function tab-date-r(){
+    autoload -U compinit
+    compinit
+    zstyle ':completion:*' file-sort modification reverse
 }
