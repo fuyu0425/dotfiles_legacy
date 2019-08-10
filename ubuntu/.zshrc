@@ -1,3 +1,5 @@
+# fix eamcs tramp mode
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 # Path to your oh-my-zsh installation.
 #export ZSH=/Users/fuyu0425/.oh-my-zsh
 

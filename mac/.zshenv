@@ -1,3 +1,5 @@
+# fix emacs tramp mode
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 # Path to your oh-my-zsh installation.
 export HOST="Leo-MacBook"
 export ZSH=/Users/fuyu0425/.oh-my-zsh
@@ -58,6 +60,8 @@ path+=($HOME/cf_submit)
 path+=(/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.16.0.201807130628/tools/compiler/bin)
 path+=($HOME/.cabal/bin)
 path+=(/opt/minicom/2.2/bin)
+path+=(/usr/local/smlnj/bin)
+path+=(/opt/local/bin /opt/local/sbin)
 unsetopt inc_append_history
 source $HOME/zsh-common.zsh
 
@@ -68,6 +72,7 @@ plugins+=(brew osx tig)
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+
 
 source $ZSH/oh-my-zsh.sh
 unsetopt inc_append_history
@@ -103,10 +108,12 @@ export PHPBREW_RC_ENABLE=1
 
 ###my own setting###
 ###################
-#export TERM='xterm-256color'
+export LANG=en_US.UTF-8 
+export LC_ALL=en_US.UTF-8
+export TERM='xterm-256color'
 #export TERM='xterm'
 # export TERM='screen-256color'
-export TERM='xterm-24bits'
+# export TERM='xterm-24bits'
 #GOPATH
 export GOPATH=~/gocode
 
@@ -162,4 +169,6 @@ alias less="LESSOPEN=\"${LESSOPEN}\" less -m -N -g -i -J  --line-numbers --under
 alias more='less'
 alias ls='exa'
 export HOMEBREW_MAKE_JOBS=4
+export HOMEBREW_NO_AUTO_UPDATE=1
 export PYTHONWARNINGS="ignore"
+
