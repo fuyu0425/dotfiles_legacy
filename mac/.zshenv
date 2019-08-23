@@ -61,7 +61,7 @@ path+=(/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu
 path+=($HOME/.cabal/bin)
 path+=(/opt/minicom/2.2/bin)
 path+=(/usr/local/smlnj/bin)
-path+=(/opt/local/bin /opt/local/sbin)
+path=(/opt/local/bin /opt/local/sbin $path)
 unsetopt inc_append_history
 source $HOME/zsh-common.zsh
 
@@ -108,7 +108,7 @@ export PHPBREW_RC_ENABLE=1
 
 ###my own setting###
 ###################
-export LANG=en_US.UTF-8 
+export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export TERM='xterm-256color'
 #export TERM='xterm'
@@ -171,4 +171,3 @@ alias ls='exa'
 export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_AUTO_UPDATE=1
 export PYTHONWARNINGS="ignore"
-

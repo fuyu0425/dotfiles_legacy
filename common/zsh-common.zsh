@@ -10,6 +10,9 @@ ZSH_COMMAND_TIME_ECHO=1
 
 cdpath+=(. $HOME  /usr/local/etc /usr/local/var /etc /var)
 
+# solve emacs shell problem
+export EMACS="*term*"
+
 alias sudo='sudo '
 function git-next() {
     git log --reverse --pretty=%H master | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
