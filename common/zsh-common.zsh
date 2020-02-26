@@ -1,5 +1,5 @@
 plugins+=(git extract  zsh-autosuggestions sudo  docker  docker-compose z tmux vagrant zsh-syntax-highlighting command-time)
-plugins+=(copydir copyfile copybuffer)
+plugins+=(copydir copyfile copybuffer alias-tips)
 path=($HOME/bin $path)
 umask 077
 # If command execution time above min. time, plugins will not output time.

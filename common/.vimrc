@@ -22,7 +22,7 @@ filetype off                  " required
 " call vundle#rc(s:editor_root . '/bundle')
 call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'        " This is for awesome outlook
@@ -43,7 +43,7 @@ Plug 'embear/vim-localvimrc'
 Plug 'Yggdroot/indentLine'
 Plug 'mkitt/tabline.vim'
 " Plug 'let-def/vimbufsync'
-Plug 'https://framagit.org/tyreunom/coquille'
+" Plug 'https://framagit.org/tyreunom/coquille'
 " Plug 'vim-scripts/vim-auto-save'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cespare/vim-toml'
@@ -253,35 +253,3 @@ let g:ale_change_sign_column_color=1
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line

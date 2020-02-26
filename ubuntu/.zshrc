@@ -89,8 +89,8 @@ source $ZSH/oh-my-zsh.sh
 
 ###my own setting###
 ###################
-# export TERM='xterm-256color'
-export TERM='xterm'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow" #support 256
+export TERM='xterm-256color'
 export EDITOR=vim
 #GOPATH
 export GOPATH=~/gocode

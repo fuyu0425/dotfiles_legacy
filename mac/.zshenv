@@ -77,9 +77,6 @@ plugins+=(brew osx tig)
 source $ZSH/oh-my-zsh.sh
 unsetopt inc_append_history
 
-# phpbrew
-export PHPBREW_RC_ENABLE=1
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -133,7 +130,7 @@ alias sshx='ssh -X'
 alias cat='ccat'
 alias ping='prettyping'
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256" #support 256
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow" #support 256
 
 
 # for makefile
@@ -171,3 +168,7 @@ alias ls='exa'
 export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_AUTO_UPDATE=1
 export PYTHONWARNINGS="ignore"
+eval "$(direnv hook zsh)"
+
+path+=("/Users/fuyu0425/.local/bin" "/Users/fuyu0425/.stack/programs/x86_64-osx/ghc-8.6.5/bin")
+path+=("~/.cabal/bin")
